@@ -11,9 +11,9 @@ public class combobox extends JFrame{
     JButton exchange;
     JButton reset;
     JButton add1;
-    JLabel amount = new JLabel("Amount of money want to convert: ");
-    JLabel amount1 = new JLabel("Amount of money after converted: ");
-    JLabel bill = new JLabel("CALCULATE THE WHOLE BILL");
+    JLabel amount = new JLabel("Amount of money to be converted: ");
+    JLabel amount1 = new JLabel("Amount of money after conversion: ");
+    JLabel bill = new JLabel("CURRENCY CONVERTER");
 
     combobox(){
         //create frame
@@ -28,7 +28,7 @@ public class combobox extends JFrame{
         this.add(numbertochange1);
 
         //bill text
-        bill.setBounds(250, 10, 500, 30);
+        bill.setBounds(300, 10, 500, 30);
         bill.setFont(font);
         this.add(bill);
 
@@ -97,22 +97,7 @@ public class combobox extends JFrame{
             }
         });
 
-        // create exchange button
-        add1 = new JButton("Add");
-        add1.setBounds(200,300,100,50);
-        add1.setFocusable(false);
-        this.add(add1);
-        //catch event when click button
-        add1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==add1) {
-                    double money = Double.parseDouble(numbertochange1.getText());
-                    total += money;
-                    System.out.printf("%.2f \n", total);
-                }
-            }
-        });
+       
 
         // create reset button
         reset = new JButton("Reset");
