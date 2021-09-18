@@ -6,6 +6,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GettingData {
+
+    String currencyFrom = "USD";
+    String currencyTo = "EUR";
+    double currencyFromCode = 0.00;
+    double currencyToCode = 0.00;
+    double moneyInitialized = 1000.00;
+
     public JsonElement returnCode(String currencyCode) throws Exception {
         // Setting URL
         String url_str = "https://v6.exchangerate-api.com/v6/d45b92e27aa87499e7e712c7/latest/USD";
@@ -26,17 +33,26 @@ public class GettingData {
         return (req_result.get(currencyCode));
     }
 
+    public void getData () throws Exception {
+        currencyFromCode =  Double.parseDouble((returnCode (currencyFrom)).toString());
+        currencyToCode =  Double.parseDouble((returnCode (currencyTo)).toString());
+    }
+
+    public void exchangeRate() {
+        double exchangeRate = currencyToCode / currencyFromCode;
+        System.out.println (moneyInitialized * exchangeRate);
+    }
+
     public static void main(String[] args) throws Exception {
         GettingData obj = new GettingData();
-        String j = "USD";
 
-        System.out.println (obj.returnCode(j));
-        //inside the empty brackets we need to figure out how to input the user input
-        //System.out.println(exchangeRate(obj.returnCode(), obj.returnCode(), moneyAmount));
+        obj.getData();
+        obj.exchangeRate();
+
+
+
+
     }
-    
-    public static double exchangeRate(double currencyFrom, double currencyTo, double moneyAmount) {
-        double exchangeRate = currencyTo / currencyFrom;
-        return moneyAmount * exchangeRate;
-    }
+
+
 }
