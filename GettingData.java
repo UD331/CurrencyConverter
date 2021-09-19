@@ -15,7 +15,7 @@ public class GettingData {
 
     public JsonElement returnCode(String currencyCode) throws Exception {
         // Setting URL
-        String url_str = "https://v6.exchangerate-api.com/v6/d45b92e27aa87499e7e712c7/latest/USD";
+        String url_str = "https://v6.exchangerate-api.com/v6/API_key/latest/USD";
 
 // Making Request
         URL url = new URL(url_str);
