@@ -6,16 +6,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GettingData {
-
-    String currencyFrom = "USD";
-    String currencyTo = "EUR";
+    public static String currencyFrom = "";
+    public static String currencyTo = "";
+    public static boolean action;
     double currencyFromCode = 0.00;
     double currencyToCode = 0.00;
-    double moneyInitialized = 1000.00;
+    public static double moneyInitialized = 0;
 
     public JsonElement returnCode(String currencyCode) throws Exception {
         // Setting URL
-        String url_str = "https://v6.exchangerate-api.com/v6/API_key/latest/USD";
+        String url_str = "https://v6.exchangerate-api.com/v6/d45b92e27aa87499e7e712c7/latest/USD";
 
 // Making Request
         URL url = new URL(url_str);
@@ -29,7 +29,6 @@ public class GettingData {
 
 // Accessing object
         JsonObject req_result = (JsonObject) jsonobj.get("conversion_rates");
-
         return (req_result.get(currencyCode));
     }
 
@@ -38,21 +37,16 @@ public class GettingData {
         currencyToCode =  Double.parseDouble((returnCode (currencyTo)).toString());
     }
 
-    public void exchangeRate() {
+    public double exchangeRate() {
         double exchangeRate = currencyToCode / currencyFromCode;
-        System.out.println (moneyInitialized * exchangeRate);
+        return exchangeRate;
     }
 
     public static void main(String[] args) throws Exception {
-        GettingData obj = new GettingData();
-
-        obj.getData();
-        obj.exchangeRate();
-
-
-
+        combobox box = new combobox();
 
     }
 
 
 }
+
